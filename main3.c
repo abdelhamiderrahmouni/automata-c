@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_STATES 5
-#define ALPHABET_SIZE 2
+#define MAX_NB_ETATS 5
+#define TAILLE_ALPHABET 2
 
-int EF[MAX_STATES] = {4}; // Les états finaux
-int TR[MAX_STATES][ALPHABET_SIZE]; // Les transitions
+int EF[MAX_NB_ETATS]; // Les états finaux
+int TR[MAX_NB_ETATS][TAILLE_ALPHABET]; // Les transitions
 char TM[100]; // Le mot à tester
 
 int AFD() {
@@ -29,9 +29,14 @@ int AFD() {
 }
 
 int main() {
+    // Initializer le tableaux des etat finaux
+    for (int i = 0; i < MAX_NB_ETATS; i++) {
+        EF[i] = 4;
+    }
+
     // Initialiser toutes les transitions à -1
-    for (int i = 0; i < MAX_STATES; i++) {
-        for (int j = 0; j < ALPHABET_SIZE; j++) {
+    for (int i = 0; i < MAX_NB_ETATS; i++) {
+        for (int j = 0; j < TAILLE_ALPHABET; j++) {
             TR[i][j] = -1;
         }
     }
